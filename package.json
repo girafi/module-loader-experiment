@@ -4,6 +4,7 @@
   "description": "This is really just a test",
   "main": "index.js",
   "scripts": {
+    "preinstall": "typings install",
     "prepublish": "tsc",
     "start": "http-server"
   },
