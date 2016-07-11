@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/girafi/module-loader-experiment/issues"
   },
-  "homepage": "https://github.com/girafi/module-loader-experiment#readme"
+  "homepage": "https://github.com/girafi/module-loader-experiment#readme",
+  "dependencies": {
+    "angular": "^1.5.7"
+  }
 }
