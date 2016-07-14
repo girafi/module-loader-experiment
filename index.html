@@ -1,10 +1,21 @@
 <HTML>
 <head>
     <script src="node_modules/angular/angular.js"></script>
-    <script src="namespaceA.js"></script>
-    <script src="myApp.js"></script>
+    <script src="node_modules/systemjs/dist/system.js"></script>
+    <script src="node_modules/typescript/lib/typescript.js"></script>
+    <script>
+        System.config({
+            transpiler: 'typescript',
+            packages: {
+                src: {
+                    defaultExtension: 'ts'
+                }
+            }
+        });
+        System.import('src/myApp').catch(console.error.bind(console));
+    </script>
 </head>
-<body ng-app="myModule">
+<body>
 <div ng-controller="myController">
     <h1>Hello World</h1>
     <h2>{{ myVar }}</h2>
