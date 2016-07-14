@@ -4,7 +4,7 @@
 
     module.controller('myController', ['$scope',
         function ($scope) {
-            $scope.myVar = 'gugus';
+            $scope.myVar = A.myConst;
         }
     ])
 
