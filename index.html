@@ -2,17 +2,28 @@
 <head>
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/systemjs/dist/system.js"></script>
-    <script src="node_modules/typescript/lib/typescript.js"></script>
     <script>
+        var isDevMode = window.location.search.substring(1).indexOf('dev') >= 0;
+        if (isDevMode) {
+            loadTypeScript();
+        }
+        function loadTypeScript() {
+            var ts_script_tag = document.createElement('script');
+            ts_script_tag.setAttribute('src', 'node_modules/typescript/lib/typescript.js');
+            document.head.appendChild(ts_script_tag);
+        }
         System.config({
-            transpiler: 'typescript',
+            transpiler: isDevMode ? 'typescript' : false,
             packages: {
                 src: {
-                    defaultExtension: 'ts'
+                    defaultExtension: isDevMode ? 'ts' : 'js'
                 }
             }
         });
-        System.import('src/myApp').catch(console.error.bind(console));
+        setTimeout(function () {
+            // this is a hack to wait for typescript library to be completely loaded. sure there must be easiear ways to load and wait for dynamic lib loading.
+            System.import('src/myApp').catch(console.error.bind(console));
+        }, 1000);
     </script>
 </head>
 <body>
